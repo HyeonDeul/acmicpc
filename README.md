@@ -4,5 +4,4 @@
 Python Coding
 
 🍀Sorted by Level🍀  
-by *_solved.ac_*
-##### <https://solved.ac>
+by [*_solved.ac_*](https://solved.ac)
