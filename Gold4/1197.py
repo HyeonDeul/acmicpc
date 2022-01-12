@@ -1,3 +1,5 @@
+# Pypy3 제출
+
 V, E = map(int, input().split())
 
 route = []
@@ -38,7 +40,6 @@ for dis, no1, no2 in route:
         visit.pop(idx2)
         ans += dis
 
-    print(visit)
     if len(visit[0]) == V:
         break
 
