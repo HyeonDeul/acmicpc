@@ -1,7 +1,9 @@
-n, m = map(int, input().split())
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
 setlist = []
 for _ in range(m):
-    c, a, b = map(str, input().split())
+    c, a, b = map(str, sys.stdin.readline().split())
     if c == '0':
         idxa, idxb = -1, -1
         for i in range(len(setlist)):
@@ -34,3 +36,4 @@ for _ in range(m):
                 break
 
         print("YES" if same else "NO")
+hi
