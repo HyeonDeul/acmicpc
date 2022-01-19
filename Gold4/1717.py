@@ -36,4 +36,3 @@ for _ in range(m):
                 break
 
         print("YES" if same else "NO")
-hi
