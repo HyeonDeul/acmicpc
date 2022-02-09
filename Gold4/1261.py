@@ -45,5 +45,3 @@ while queue:
                 queue.append([next_row, next_col, temp_brk])
 
 print(temp_graph[N-1][M-1])
-993
--107
