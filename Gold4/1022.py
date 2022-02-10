@@ -27,11 +27,11 @@ l = max(len(answer[0][0]), len(answer[r2-r1][0]),
 
 answer_str = ''
 
-for i in answer:
+for line in answer:
     for j in range(c2-c1+1):
         if j == c2-c1:
-            answer_str += ' '*(l-len(i[j]))+i[j]+'\n'
+            answer_str += ' '*(l-len(line[j]))+line[j]+'\n'
         else:
-            answer_str += ' '*(l-len(i[j]))+i[j]+' '
+            answer_str += ' '*(l-len(line[j]))+line[j]+' '
 
 print(answer_str, end='')
