@@ -38,6 +38,7 @@ for connection in connections:
         visit.pop(b_idx)
         cost += c
     visit[0].sort()
+
     if visit[0] == full:
         print(cost)
         break
