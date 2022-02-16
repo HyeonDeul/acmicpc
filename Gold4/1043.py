@@ -35,4 +35,5 @@ while queue:
 for party in parties:
     if len(set(truthPeople) & set(party[1:])) == 0:
         answer += 1
+
 print(answer)
