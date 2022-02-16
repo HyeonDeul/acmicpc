@@ -11,7 +11,6 @@ for _ in range(M):
 connections.sort()
 visit = []
 cost = 0
-full = [i for i in range(1, N+1)]
 for connection in connections:
     c, a, b = connection
 
@@ -39,6 +38,6 @@ for connection in connections:
         cost += c
     visit[0].sort()
 
-    if visit[0] == full:
+    if len(set(visit[0])) == N:
         print(cost)
         break
