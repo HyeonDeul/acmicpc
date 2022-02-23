@@ -2,22 +2,22 @@ from collections import deque
 
 N = int(input())
 arr = list(map(int, input().split()))
-O = -1
-big = deque()
+mostBigNum = -1
+O_arr = deque()
 answer = deque()
 for i in arr[::-1]:
-    if i >= O:
-        big = deque([i])
+    if i >= mostBigNum:
+        O_arr = deque([i])
         answer.appendleft(-1)
-        O = i
+        mostBigNum = i
     else:
         while True:
-            now = big[0]
+            now = O_arr[0]
             if i < now:
-                answer.appendleft(big[0])
-                big.appendleft(i)
+                answer.appendleft(O_arr[0])
+                O_arr.appendleft(i)
                 break
             else:
-                big.popleft()
+                O_arr.popleft()
 
 print(' '.join(list(map(str, answer))))
