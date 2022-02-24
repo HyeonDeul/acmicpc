@@ -3,8 +3,10 @@ from collections import deque
 
 N, M = map(int, sys.stdin.readline().split())
 
-graph = []
-ices = []
+# graph = []
+# ices = []
+graph = deque()
+ices = deque()
 
 for i in range(N):
     line = list(map(int, sys.stdin.readline().split()))
@@ -56,7 +58,8 @@ while not splitIce:
 
         if graph[row][col] <= 0:
             graph[row][col] = 0
-            ices.pop(idx)
+            # print(ices.pop(idx))
+            ices.remove([row, col])
             l -= 1
         else:
             idx += 1
@@ -78,8 +81,9 @@ while not splitIce:
                     continue
                 if graph[next_row][next_col] != 0:
                     if [next_row, next_col] not in visit:
-                        visit.appendleft([next_row, next_col])
+                        visix`t.appendleft([next_row, next_col])
                         queue.appendleft([next_row, next_col])
         if len(visit) != len(ices):
             splitIce = True
+
 print(answer)
