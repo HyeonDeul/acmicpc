@@ -81,7 +81,7 @@ while not splitIce:
                     continue
                 if graph[next_row][next_col] != 0:
                     if [next_row, next_col] not in visit:
-                        visix`t.appendleft([next_row, next_col])
+                        visit.appendleft([next_row, next_col])
                         queue.appendleft([next_row, next_col])
         if len(visit) != len(ices):
             splitIce = True
