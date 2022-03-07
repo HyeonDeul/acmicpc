@@ -2,7 +2,7 @@
 ## 백준 문제푸는 Repository
 > Main Language : Python  
 <br/>
-🍀Sorted by Level according to [*_solved.ac_*](https://solved.ac)🍀    
+🍀 Sorted by Level according to https://solved.ac 🍀    
 <br/><br/>  
 
 ## 🟪 BaekJoon Profile
