@@ -7,9 +7,9 @@ while True:
         break
 
     opinions = [-1]+list(map(int, sys.stdin.readline().rstrip().split()))
-
     friends = {i: [] for i in range(1, N+1)}
 
+    change = 0
     dif = 0
     for _ in range(M):
         x, y = map(int, sys.stdin.readline().split())
@@ -17,8 +17,6 @@ while True:
             dif += 1
         friends[x].append(y)
         friends[y].append(x)
-
-    change = 0
 
     queue = deque([])
     for i in range(1, N+1):
