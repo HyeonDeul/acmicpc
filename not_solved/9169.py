@@ -44,7 +44,7 @@ while True:
             else:
                 difValue += 1
 
-        if sameValue-difValue+1 <= 0:
+        if sameValue-difValue+1 < 0:
             change += 1
             dif += sameValue-difValue
             if now == 1:
