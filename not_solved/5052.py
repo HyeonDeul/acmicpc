@@ -1,6 +1,5 @@
 import sys
 
-class
 
 for _ in range(int(sys.stdin.readline())):
     N = int(sys.stdin.readline())
@@ -12,4 +11,5 @@ for _ in range(int(sys.stdin.readline())):
         if ilguanseong:
             dif = False
             for i in number:
-                if i not in graph
+                if i not in graph:
+                    pass
