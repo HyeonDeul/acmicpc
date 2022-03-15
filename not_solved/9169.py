@@ -52,3 +52,7 @@ while True:
             queue.extend(friends[i])
 
     print(dif + change)
+
+# 같 + 1 = 다 : 고민
+# 같 + 1 < 다 : 바꾸기
+# change+dif > 의견 => 의견 바꾸기
