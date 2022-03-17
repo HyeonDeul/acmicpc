@@ -1,42 +1,12 @@
-import sys
+n = int(input())
 
-
-def findRGB(street, RGB, prev, now, N):
-    if now == N:
-        print('final', RGB)
-        return RGB
-    else:
-        print(RGB)
-        temp1 = float('inf')
-        temp2 = float('inf')
-        if prev == 0:
-            if street[now][1] <= street[now][2]:
-                temp1 = findRGB(street, RGB+street[now][1], 1, now+1, N)
-            if street[now][2] <= street[now][1]:
-                temp2 = findRGB(street, RGB+street[now][2], 2, now+1, N)
-        elif prev == 1:
-            if street[now][0] <= street[now][2]:
-                temp1 = findRGB(street, RGB+street[now][0], 0, now+1, N)
-            if street[now][2] <= street[now][0]:
-                temp2 = findRGB(street, RGB+street[now][2], 2, now+1, N)
-        else:
-            if street[now][1] <= street[now][0]:
-                temp1 = findRGB(street, RGB+street[now][1], 1, now+1, N)
-            if street[now][0] <= street[now][1]:
-                temp2 = findRGB(street, RGB+street[now][0], 0, now+1, N)
-        return min(temp1, temp2)
-
-
-N = int(sys.stdin.readline())
 street = []
+for i in range(n):
+    street.append(list(map(int, input().split())))
 
-for _ in range(N):
-    street.append(list(map(int, sys.stdin.readline().split())))
-print(street)
+for i in range(1, len(street)):
+    street[i][0] = min(street[i - 1][1], street[i - 1][2]) + street[i][0]
+    street[i][1] = min(street[i - 1][0], street[i - 1][2]) + street[i][1]
+    street[i][2] = min(street[i - 1][0], street[i - 1][1]) + street[i][2]
 
-minRGB = float('inf')
-for i in range(3):
-    temp = findRGB(street, street[0][i], i, 1, N)
-    if minRGB > temp:
-        minRGB = temp
-print(minRGB)
+print(min(street[n - 1][0], street[n - 1][1], street[n - 1][2]))
