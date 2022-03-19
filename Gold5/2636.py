@@ -56,9 +56,6 @@ while temp_holes:
     if isIn:
         inner_holes.extend(hole)
 
-print(inner_holes)
-
-
 hour = 0
 
 while cheeses:
