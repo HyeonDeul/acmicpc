@@ -1,25 +1,29 @@
 import sys
 
 
-def game(rock, now):
+def game(rock, now, rock_list=[]):
     if rock.count(0) > 1:
-        return rock, now
+        return rock, now, rock_list
     else:
-
         rock.sort()
         if rock[0] == 0:
-            winRock, winner = game([0, rock[1]-1, rock[2]-1], -1*now)
-            return winRock, winner
+            rock_list.append([0, rock[1]-1, rock[2]-1])
+            winRock, winner, seque = game(
+                [0, rock[1]-1, rock[2]-1], -1*now, rock_list)
+            return winRock, winner, seque
         else:
             rockList = [[rock[0]-1, rock[1]-1, rock[2]],
                         [rock[0]-1, rock[1], rock[2]-1],
                         [rock[0], rock[1]-1, rock[2]-1]]
             for i in range(3):
-                winRock, winner = game(rockList[i], -1*now)
+                temp = rock_list[:]
+                temp.append(rockList[i])
+                winRock, winner, seque = game(rockList[i], -1*now, temp)
+                winRock = rockList[i]
                 if winner == now:
-                    winRock = rockList[i]
                     break
-            return winRock, winner
+
+            return winRock, winner, seque
 
 
 while True:
@@ -29,12 +33,9 @@ while True:
     now = 1
 
     while True:
-        rock, winner = game(rock, now)
-        print(rock, '나는', now, '이고, 승자는', winner)
+        rock, winner, RockList = game(rock, now, [rock])
         if winner != now:
             break
-        if rock.count(0) == 2:
-            break
         now *= -1
-
+    print(RockList)
     print('R' if winner == 1 else 'B')
