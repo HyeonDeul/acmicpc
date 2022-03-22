@@ -21,11 +21,11 @@ def game(rock, now):
 
 dif = []
 with open("test.txt", 'w') as f:
-    f.write('\t\t\t\tMy code \tAlgorithm\n')
+    f.write('\t\t\t\t\tMy code \tAlgorithm\n')
 
-    for i in range(1, 10):
-        for j in range(i, 10):
-            for k in range(j, 10):
+    for i in range(1, 20):
+        for j in range(i, 20):
+            for k in range(j, 20):
 
                 rock = [i, j, k]
                 rock.sort()
@@ -37,49 +37,101 @@ with open("test.txt", 'w') as f:
                 elif rock[0] == 1:
                     if rock[1] == rock[2] and rock[1] % 2 == 1:
                         cnt = 1
+                    else:
+                        cnt = 0
                 elif rock.count(1) > 0:
                     cnt = 0
+
                 # 홀수
                 elif rock[0] % 2 == 1:
-                    # 홀수
+                    # 홀수 홀수
                     if rock[1] % 2 == 1:
-                        if rock[1] == rock[2] and rock[0] != 3:
-                            cnt = 1
-                        else:
+                        if rock[0] == 3:
                             cnt = 0
+                        # 둘이 같은경우
+                        elif rock[0] == 5:
+                            if rock[1] == rock[2]:
+                                cnt = 1
+                            else:
+                                cnt = 0
+                        elif (rock[0]-1) % 4 == 0:
+                            if rock[1] == rock[2]:
+                                cnt = 1
+                            elif rock[1]+4 == rock[2]:
+                                cnt = 1
+                            else:
+                                cnt = 0
+                        else:
+                            if rock[1]+2 == rock[2]:
+                                cnt = 1
+                            else:
+                                cnt = 0
+                    # 홀수 짝수
                     else:
-                        # 짝수
                         if rock[0] == 3:
                             if rock[1] == rock[2]:
                                 cnt = 1
                             else:
                                 cnt = 0
-                        elif rock[1] % 2 == 0 and rock[2] % 2 == 0:
-                            if rock[1] == rock[2]:
+                        # 홀 짞 짝
+                        elif rock[2] % 2 == 0:
+                            # [0]이 4의 배수인경우
+                            if (rock[0]-1) % 4 == 0:
+                                if rock[1]+2 == rock[2]:
+                                    cnt = 1
+                                else:
+                                    cnt = 0
+                            # [0]이 4의 배수가 아닌경우
+                            else:
+                                if (rock[2]-rock[1]) % 4 == 0:
+                                    cnt = 1
+                                else:
+                                    cnt = 0
+                        # 홀 짞 홀
+                        else:
+                            cnt = 0
+
+                # 짝수
+                else:
+                    if rock[0] == 2:
+                        if rock[1] % 2 == 0:
+                            cnt = 1
+                        else:
+                            cnt = 0
+                    elif rock[2]-rock[1] == 5 and rock[0] != 4 and rock[0] != 6:
+                        if (rock[1]-rock[0]) % 2 == 0:
+                            cnt = 0
+                        else:
+                            cnt = 1
+                    # [0] 4의 배수
+                    elif rock[0] % 4 == 0:
+                        # [1] 짝수
+                        if rock[1] % 2 == 0:
+                            if rock[1]+1 == rock[2]:
                                 cnt = 0
                             else:
                                 cnt = 1
                         else:
-                            cnt = 0
-                # 짝수
-                else:
-                    # 홀수
-                    if rock[1] % 2 == 1:
-                        if rock[1]+1 == rock[2] and rock[0] != 2:
-                            cnt = 1
-                        else:
-                            cnt = 0
-                    # 짝수
-                    # else:
-                        # cnt = 1
+                            if rock[1]+1 == rock[2]:
+                                cnt = 1
+                            else:
+                                cnt = 0
+                    # [0] 4의 안 배수
                     else:
-                        if rock[1]+1 == rock[2] and rock[0] != 2:
-                            cnt = 0
+                        if rock[1] % 2 == 0:
+                            if rock[1]+3 == rock[2]:
+                                cnt = 0
+                            else:
+                                cnt = 1
                         else:
-                            cnt = 1
-                winner1 = 'B' if cnt % 2 == 1 else 'R'
+                            if rock[1]+3 == rock[2]:
+                                cnt = 1
+                            else:
+                                cnt = 0
 
-                line = '[ '+str(i)+' '+str(j)+' '+str(k)+' ] win :\t'+winner1
+                winner1 = 'B' if cnt == 1 else 'R'
+
+                line = '[ '+str(i)+' '+str(j)+' '+str(k)+' ]\twin :\t'+winner1
 
                 # 알고리즘
                 rock = [i, j, k]
