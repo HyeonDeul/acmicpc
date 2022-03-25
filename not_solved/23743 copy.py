@@ -2,7 +2,6 @@ import sys
 
 
 N, M = map(int, sys.stdin.readline().split())
-warps = []
 parants = [i for i in range(N+1)]
 
 
@@ -18,8 +17,7 @@ def union(x, y):
     parants[root2] = root1
 
 
-for _ in range(M):
-    warps.append(list(map(int, sys.stdin.readline().split())))
+warps = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
 
 escapes = list(map(int, sys.stdin.readline().split()))
 for i in range(N):
@@ -27,14 +25,11 @@ for i in range(N):
 
 warps.sort(key=lambda x: x[2])
 
-edges = 0
 totalTime = 0
 
-while edges != N:
-    x, y, dis = warps.pop(0)
+for x, y, dis in warps:
     if find(x) != find(y):
         union(x, y)
         totalTime += dis
-        edges += 1
 
 print(totalTime)

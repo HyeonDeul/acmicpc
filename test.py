@@ -1,6 +1,20 @@
-def func():
-    return 1, 2, 3
+import time
+from collections import deque
 
 
-a, b, c = func()
-print(a, b, c)
+start = time.time()
+temp = [0 for _ in range(1000000)]
+end = time.time()
+print(f"{end - start: .5f} sec")
+
+
+start = time.time()
+queue = deque(temp)
+end = time.time()
+print(f"{end - start: .5f} sec")
+
+
+start = time.time()
+queue = deque([0 for _ in range(1000000)])
+end = time.time()
+print(f"{end - start: .5f} sec")
