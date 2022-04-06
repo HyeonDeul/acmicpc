@@ -1,5 +1,4 @@
 def z(n, row, col, start=0):
-    print(f'n : {n}, where : ({row}, {col}), start : {start}')
     if n == 0:
         return start
     else:
