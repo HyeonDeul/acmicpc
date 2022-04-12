@@ -17,7 +17,7 @@ while queue:
     for next in nexts:
         if next == -1:
             continue
-        if graph[next] > time+1:
+     xx   if graph[next] > time+1:
             graph[next] = time+1
             way[next] = now
             queue.append([next, time+1])
