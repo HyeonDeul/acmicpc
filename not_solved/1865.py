@@ -2,11 +2,23 @@ import sys
 
 for _ in range(int(sys.stdin.readline())):
     N, M, W = map(int, sys.stdin.readline().split())
-    graph = {i: [] for i in range(1, N+1)}
+    graph = {i: {} for i in range(1, N+1)}
+
     for _ in range(M):
         S, E, T = map(int, sys.stdin.readline().split())
-        graph[S].append([E, T])
-        graph[E].append([S, T])
+        if E not in graph[S]:
+            graph[S][E] = T
+        elif graph[S][E] > T:
+            graph[S][E] = T
+        if S not in graph[E]:
+            graph[E][S] = T
+        elif graph[E][S] > T:
+            graph[E][S] = T
     for _ in range(W):
         S, E, T = map(int, sys.stdin.readline().split())
-        graph[S].append([E, T])
+        graph[S][E] = T
+
+    # 벨만 -포드 알고리즘 공부하기
+
+    11일 4시간
+    10일
