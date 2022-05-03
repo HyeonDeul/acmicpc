@@ -19,6 +19,3 @@ for _ in range(int(sys.stdin.readline())):
         graph[S][E] = T
 
     # 벨만 -포드 알고리즘 공부하기
-
-    11일 4시간
-    10일

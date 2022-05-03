@@ -10,7 +10,7 @@ for _ in range(N-1):
     graph[y].append(x)
 
 
-def DFS(n, option):
+def DFS(n):
     distances = [-1]*(N+1)
     que = deque([[n, n]])
     distances[n] = [fruits[n-1], [n, n]]
@@ -33,21 +33,17 @@ def DFS(n, option):
                     nodeList = [next]
                 elif maxDis == dis:
                     nodeList.append(next)
-    if option == 1:
-        same = {}
-        for node in nodeList:
-            same[node] = [distances[node][0], min(distances[node][1])]
-        return same
-    else:
-        return nodeList
+    same = {}
+    for node in nodeList:
+        same[node] = [distances[node][0], min(distances[node][1])]
+    return same
 
 
-# 노드 : [길이, 최소]
-dis = DFS(1, 0)
+dis = DFS(1)
 maxDis = -1
 ansNode = -1
 for node in dis:
-    finalDis = DFS(node, 1)
+    finalDis = DFS(node)
     for ans in finalDis:
         if maxDis < finalDis[ans][0]:
             maxDis = finalDis[ans][0]
