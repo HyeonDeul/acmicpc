@@ -18,9 +18,8 @@ for _ in range(M):
     com, x, y = map(int, sys.stdin.readline().split())
     find_x = find(x)
     find_y = find(y)
-    if find_x == find_y:
-        continue
-    elif com == 1:
+
+    if com == 1:
         conturies[find_x] += conturies[find_y]
         conturies[find_y] = -1*find_x
 
@@ -34,7 +33,6 @@ for _ in range(M):
         else:
             conturies[find_y] -= conturies[find_x]
             conturies[find_x] = -1*find_y
-
 
 answer = []
 for i in conturies:
