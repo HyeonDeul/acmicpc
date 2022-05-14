@@ -39,8 +39,7 @@ class Deque{
         int size(){
             return (idx_back - idx_front) % MAX;
         }
-
-}
+};
 
 int main() {
 
