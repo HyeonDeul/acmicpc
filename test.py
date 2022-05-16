@@ -1,13 +1,17 @@
-from bisect import bisect_left, bisect_right
+import time
+from collections import deque
 
-nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-n = 5
 
-print(bisect_left(nums, n))
-print(bisect_right(nums, n))
+b = deque()
+start = time.time()
+for i in range(100000):
+    b.appendleft(i)
+end = time.time()
+print(end - start)
 
-'''
-결과값
-5
-6
-'''
+a = []
+start = time.time()
+for i in range(100000):
+    a.insert(0, i)
+end = time.time()
+print(end - start)
