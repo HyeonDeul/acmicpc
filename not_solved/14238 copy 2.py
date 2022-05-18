@@ -1,3 +1,4 @@
+
 from collections import deque
 
 graph = {'A': 0, 'B': 0, 'C': 0}
@@ -36,6 +37,8 @@ def func(work, la, lb, lc):
                         func(work+'C', a, b, c-1)
                 else:
                     func(work+'C', a, b, c-1)
+            if a > 0:
+                func()
 
 
 while que:
