@@ -16,3 +16,7 @@ for row in range(N):
         elif line[i] == -1:
             vac.append([row, col])
     graph.append(list)
+
+drow = [-1, 0, 1, 0]
+dcol = [0, 1, 0, -1]
+
