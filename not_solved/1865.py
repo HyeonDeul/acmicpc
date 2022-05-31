@@ -16,6 +16,7 @@ for _ in range(int(sys.stdin.readline())):
             graph[E][S] = T
     for _ in range(W):
         S, E, T = map(int, sys.stdin.readline().split())
+        # 틀리면 시간 갱신
         graph[S][E] = T
 
     # 벨만 -포드 알고리즘 공부하기

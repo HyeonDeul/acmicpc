@@ -21,9 +21,6 @@ cnt = 0
 while que:
     row, col, dis, now_graph = que.pop()
     if dis == K:
-        for i in now_graph:
-            print(i)
-        print('------------------------------')
         if row == 0 and col == C-1:
             cnt += 1
         else:
