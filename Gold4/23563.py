@@ -35,7 +35,7 @@ for i in range(4):
 que = deque([[row, col, 0, isWall]])
 
 while que:
-    row, col, dis, isWall = que.pop()
+    row, col, dis, isWall = que.popleft()
     if graph[row][col] != '.' and graph[row][col] < dis:
         continue
 
@@ -77,7 +77,4 @@ while que:
                     graph[next_row][next_col] = dis+1
                     que.append([next_row, next_col, dis+1, isWallToo])
 
-
-for i in graph:
-    print(i)
 print(graph[end_row][end_col])
