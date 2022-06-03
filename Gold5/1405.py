@@ -6,7 +6,7 @@ direction = [E/100, W/100, S/100, N/100]
 drow = [0, 0, 1, -1]
 dcol = [1, -1, 0, 0]
 
-row, col = 14, 14
+row, col = 100, 100
 que = deque([[0, row, col, 1, str(row)+','+str(col)]])
 
 answer = 0
@@ -28,9 +28,8 @@ while que:
             # if temp in visit:
 
             if visit.find(temp) == -1:
-                print(i)
                 que.append([cnt, next_row, next_col, per *
-                           direction[i], visit+' '+temp])
+                            direction[i], visit+' '+temp])
 
 
 print(answer)
