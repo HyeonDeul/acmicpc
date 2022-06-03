@@ -13,7 +13,7 @@ answer = 0
 
 while que:
     cnt, row, col, per, visit = que.pop()
-    # print(cnt, per)
+
     if cnt == com:
         answer += per
         continue
@@ -25,7 +25,6 @@ while que:
             next_col = col+dcol[i]
 
             temp = str(next_row)+','+str(next_col)
-            # if temp in visit:
 
             if visit.find(temp) == -1:
                 que.append([cnt, next_row, next_col, per *
