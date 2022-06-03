@@ -56,10 +56,8 @@ for row, col in blank:
         sudoku[row][col] = num
         temp.append([row, col])
 
-if len(temp) == 0:
-    answer = copy.deepcopy(sudoku)
-else:
-    answer = []
+
+answer = copy.deepcopy(sudoku)
 que = deque([[temp, sudoku]])
 
 
