@@ -6,7 +6,7 @@ sudoku = []
 blank = deque()
 l_blank = 0
 for row in range(9):
-    line = list(map(int, input().split()))
+    line = list(map(int, input().rstrip()))
     for col in range(9):
         if line[col] == 0:
             blank.append([row, col])
@@ -42,7 +42,9 @@ def func(idx):
     else:
         if idx == l_blank:
             for i in sudoku:
-                print(*i)
+                for j in i:
+                    print(j, end='')
+                print()
             isSolved = True
             return
         row, col = blank[idx]

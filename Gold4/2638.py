@@ -71,5 +71,4 @@ while melting_list:
                 change(nextRow, nextCol, 0, -1)
         melting_list = melting(cheeses)
 
-
 print(cnt)
