@@ -1,20 +1,14 @@
 from collections import deque
+import copy
 import time
 
-a = []
+a = [1 for _ in range(10000000)]
 start = time.time()
-for i in range(10000000):
-    a.append(i)
-for _ in range(10000000):
-    a.pop()
+b = a[:]
 end = time.time()
 print(end-start)
 
-b = deque()
 start = time.time()
-for i in range(10000000):
-    b.append(i)
-for _ in range(10000000):
-    b.pop()
+c = copy.deepcopy(a)
 end = time.time()
 print(end-start)

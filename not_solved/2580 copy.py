@@ -1,113 +1,71 @@
 from collections import deque
-import copy
+import sys
+input = sys.stdin.readline
+
 
 sudoku = []
-
-blank = 0
-blankList = []
+blank = []
 for row in range(9):
     line = list(map(int, input().split()))
     for col in range(9):
         if line[col] == 0:
-            blank += 1
-            blankList.append([row, col])
+            blank.append([row, col])
     sudoku.append(line)
 
 
-def hori(row, sudoku, blank):
-    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    changeList = []
+def find(row, col, sudoku):
+    ver_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    hor_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     for i in range(9):
+        ver_now = sudoku[row][i]
         try:
-            if 0 < sudoku[row][i] < 10:
-                nums.remove(sudoku[row][i])
-            else:
-                changeList.append(i)
+            if 0 < ver_now < 10:
+                ver_numbers.remove(ver_now)
         except:
-            changeList.append(i)
-    for i in changeList:
-        if sudoku[row][i] == 0:
-            sudoku[row][i] = nums
-        else:
-            sudoku[row][i] = list(set(nums) & set(sudoku[row][i]))
-        if len(sudoku[row][i]) == 1:
-            sudoku[row][i] = sudoku[row][i][0]
-            blank -= 1
-            blankList.remove([row, i])
-    return sudoku, blank
-
-
-def verti(col, sudoku, blank):
-    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    changeList = []
-    for i in range(9):
+            pass
+        hor_now = sudoku[i][col]
         try:
-            if 0 < sudoku[i][col] < 10:
-                nums.remove(sudoku[i][col])
-            else:
-                changeList.append(i)
+            if 0 < hor_now < 10:
+                hor_numbers.remove(hor_now)
         except:
-            changeList.append(i)
-    for i in changeList:
-        if sudoku[i][col] == 0:
-            sudoku[i][col] = nums
-        else:
-            sudoku[i][col] = list(set(nums) & set(sudoku[i][col]))
-        if len(sudoku[i][col]) == 1:
-            sudoku[i][col] = sudoku[i][col][0]
-            blank -= 1
-            blankList.remove([i, col])
-    return sudoku, blank
-
-
-def square(row, col, sudoku, blank):
-    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    changeList = []
+            pass
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     for i in range(3):
         for j in range(3):
-            now = sudoku[3*row+i][3*col+j]
+            now = sudoku[3*(row//3)+i][3*(col//3)+j]
             try:
                 if 0 < now < 10:
-                    nums.remove(now)
-                else:
-                    changeList.append([3*row+i, 3*col+j])
+                    numbers.remove(now)
             except:
-                changeList.append([3*row+i, 3*col+j])
-    for r, c in changeList:
-        if sudoku[r][c] == 0:
-            sudoku[r][c] = nums
-        else:
-            sudoku[r][c] = list(set(nums) & set(sudoku[r][c]))
-        if len(sudoku[r][c]) == 1:
-            sudoku[r][c] = sudoku[r][c][0]
-            blank -= 1
-            blankList.remove([r, c])
-    return sudoku, blank
+                pass
+    all_num = set(ver_numbers) & set(hor_numbers) & set(numbers)
+    return all_num
 
 
-origin = copy.deepcopy(sudoku)
-for i in range(9):
-    sudoku, blank = hori(i, sudoku, blank)
-for i in range(9):
-    sudoku, blank = verti(i, sudoku, blank)
-for i in range(3):
-    for j in range(3):
-        sudoku, blank = square(i, j, sudoku, blank)
+que = deque([[blank, sudoku]])
+answer = []
 
-while origin != sudoku:
-    origin = copy.copy(sudoku)
-    for i in range(9):
-        sudoku, blank = hori(i, sudoku, blank)
-    if blank == 0:
+while que:
+    left, graph = que.pop()
+
+    if len(left) == 0:
+        answer = graph
         break
-    for i in range(9):
-        sudoku, blank = verti(i, sudoku, blank)
-    if blank == 0:
-        break
-    for i in range(3):
-        for j in range(3):
-            sudoku, blank = square(i, j, sudoku, blank)
 
+    row, col = left.pop()
+    can = find(row, col, graph)
 
-for i in sudoku:
+    if len(can) == 1:
+        graph[row][col] = list(can)[0]
+        que.append([left, graph])
+    else:
+        for c in can:
+            temp_left = left[:]
+            temp_graph = []
+            for g in graph:
+                temp_graph.append(g[:])
+            temp_graph[row][col] = c
+            que.append([temp_left, temp_graph])
+
+for i in answer:
     print(*i)
