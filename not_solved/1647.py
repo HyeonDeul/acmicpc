@@ -42,3 +42,4 @@ for cost, x, y in roads:
         break
 
 print(totalCost)
+print('hi')
