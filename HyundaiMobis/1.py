@@ -24,3 +24,6 @@ answer = 0
 for g in goal:
     answer += goal[g][0]
 print(answer)
+
+# Dead or Arrive
+# 자동자 싸움

@@ -52,3 +52,6 @@ for _ in range(K):
         print(0)
     else:
         print(longStr, longCnt)
+
+# 생산 공정
+# 고장나는 문자열 찾기

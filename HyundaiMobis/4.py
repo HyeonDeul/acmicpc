@@ -57,3 +57,6 @@ for row in range(N):
         answer = max(DFS(row, col), answer)
 
 print(answer)
+
+# 주차 시스템
+# 치즈 문제 처럼 구역 찾기

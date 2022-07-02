@@ -24,14 +24,14 @@ for i in range(teams-1):
         if start == -1:
             start = i
     else:
-        if end == -1:
-            end = i
+        end = i
         break
 
 left_b, left_s = games, games
 
 while left_s:
-    if start == teams-1 or start == -1 or start == end:
+    # 시작이 마지막인 경우
+    if start == -1 or start == end:
         break
 
     if medals[start][1] == s:
