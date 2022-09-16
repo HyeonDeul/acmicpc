@@ -1,4 +1,5 @@
 from itertools import combinations
+import random
 
 arr = [
     '이현정',
@@ -44,7 +45,18 @@ arr = [
 ]
 
 print(len(arr))
+random.shuffle(arr)
+ans = []
+with open('nanum.txt', 'w', encoding='utf-8') as f:
+    while len(arr) != 1:
+        result = list(combinations(arr, 3))[0]
+        print(result)
+        ans.append(list(result))
+        for i in result:
+            arr.remove(i)
 
-result = combinations(arr, 3)
-for i in result:
-    print(i)
+    ans[-1].append(arr[0])
+    line = """"""
+    for i in ans:
+        line += ', '.join(i)+'\n'
+    f.write(line)
