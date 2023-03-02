@@ -2,7 +2,6 @@ from itertools import combinations
 import random
 
 arr = [
-    '이현정',
     '조아름',
     '최주향',
     '김다인',
@@ -11,7 +10,6 @@ arr = [
     '정덕현',
     '최명진',
     '이수빈',
-    '이경규',
     '이효진',
     '전현수',
     '김아영',
@@ -47,15 +45,14 @@ arr = [
 print(len(arr))
 random.shuffle(arr)
 ans = []
-with open('nanum.txt', 'w', encoding='utf-8') as f:
-    while len(arr) != 1:
-        result = list(combinations(arr, 3))[0]
+with open('jo.txt', 'w', encoding='utf-8') as f:
+    while len(arr) >= 2:
+        result = list(combinations(arr, 2))[0]
         print(result)
         ans.append(list(result))
         for i in result:
             arr.remove(i)
 
-    ans[-1].append(arr[0])
     line = """"""
     for i in ans:
         line += ', '.join(i)+'\n'
