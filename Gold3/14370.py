@@ -80,7 +80,7 @@ for case in range(1, n+1):
         letterDict['E'] -= f
 
     if letterDict['N']:
-        n = letterDict['N']
+        n = letterDict['N']//2
         nums[9] += n
         letterDict['N'] -= n*2
         letterDict['I'] -= n
