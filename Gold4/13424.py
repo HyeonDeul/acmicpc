@@ -13,7 +13,7 @@ def dijkstra(graph, start):
         if distances[current_node] < current_distance:
             continue
 
-        for new_node, new_distance in graph[current_node].items():
+        for new_node, new_distance in graph[current_node]:
             distance = current_distance + new_distance
             if distance < distances[new_node]:
                 distances[new_node] = distance
@@ -34,3 +34,13 @@ for _ in range(int(input())):
 
     cntFriends = int(input())
     friends = list(map(int, input().split()))
+
+    sumOfDistance = [0 for _ in range(N+1)]
+    sumOfDistance[0] = float('inf')
+
+    for f in friends:
+        distance = dijkstra(graph, f)
+        for i in range(1, N+1):
+            sumOfDistance[i] += distance[i]
+
+    print(sumOfDistance.index(min(sumOfDistance)))
